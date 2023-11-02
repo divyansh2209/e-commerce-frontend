@@ -29,6 +29,15 @@ import { ITEMS_PER_PAGE, discountedPrice } from '../../../app/constants';
 import Pagination from '../../common/Pagination';
 import { Grid } from 'react-loader-spinner';
 
+import {
+  Card,
+  CardHeader,
+  CardBody,
+  CardFooter,
+  Typography,
+  Button,
+} from "@material-tailwind/react";
+
 const sortOptions = [
   { name: 'Best Rating', sort: 'rating', order: 'desc', current: false },
   { name: 'Price: Low to High', sort: 'price', order: 'asc', current: false },
@@ -416,8 +425,10 @@ function ProductGrid({ products, status }) {
           ) : null}
           {products.map((product) => (
             <Link to={`/product-detail/${product.id}`} key={product.id}>
-              <div className="group relative border-solid border-2 p-2 border-gray-200">
-                <div className="min-h-60 aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-60">
+
+
+              <div className=" p-4 group relative border-solid border-2 rounded-lg  border-gray-200">
+                <div className=" min-h-60 aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-60">
                   <img
                     src={product.thumbnail}
                     alt={product.title}
@@ -456,7 +467,6 @@ function ProductGrid({ products, status }) {
                     <p className="text-sm text-red-400">out of stock</p>
                   </div>
                 )}
-                {/* TODO: will not be needed when backend is implemented */}
               </div>
             </Link>
           ))}

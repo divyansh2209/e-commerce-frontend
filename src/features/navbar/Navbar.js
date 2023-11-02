@@ -34,7 +34,7 @@ function NavBar({ children }) {
   return (
     <>
       {userInfo && <div className="min-h-full">
-        <Disclosure as="nav" className="bg-gray-800">
+        <Disclosure as="nav" className="bg-gray-100 border-b-2">
           {({ open }) => (
             <>
               <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -43,7 +43,7 @@ function NavBar({ children }) {
                     <div className="flex-shrink-0">
                       <Link to="/">
                         <img
-                          className="h-8 w-8"
+                          className="h-16 w-16"
                           src="/ecommerce.png"
                           alt="Your Company"
                         />
@@ -59,7 +59,7 @@ function NavBar({ children }) {
                               className={classNames(
                                 item.current
                                   ? 'bg-gray-900 text-white'
-                                  : 'text-gray-300 hover:bg-gray-700 hover:text-white',
+                                  : 'text-gray-900 hover:bg-gradient-to-tr hover:from-violet-500 hover:to-pink-500 hover:text-white hover:underline-offset-2',
                                 'rounded-md px-3 py-2 text-sm font-medium'
                               )}
                               aria-current={item.current ? 'page' : undefined}
@@ -76,7 +76,7 @@ function NavBar({ children }) {
                       <Link to="/cart">
                         <button
                           type="button"
-                          className="rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
+                          className="rounded-full text-gray-900 hover:bg-gradient-to-tr hover:from-violet-500 hover:to-pink-500 hover:text-white hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
                         >
                           <span className="sr-only">View notifications</span>
                           <ShoppingCartIcon
@@ -94,13 +94,11 @@ function NavBar({ children }) {
                       {/* Profile dropdown */}
                       <Menu as="div" className="relative ml-3">
                         <div>
-                          <Menu.Button className="flex max-w-xs items-center rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
-                            <span className="sr-only">Open user menu</span>
-                            <img
-                              className="h-8 w-8 rounded-full"
-                              src={userInfo.imageUrl}
-                              alt=""
-                            />
+                          <Menu.Button className="flex max-w-xs items-center rounded-full bg-gray-800 text-sm ">
+                            {/* <span className="sr-only">Open user menu</span> */}
+                            <div className="h-8 w-8 rounded-full bg-gradient-to-tr from-violet-500 to-pink-500 animate-spin" >
+                              
+                            </div>
                           </Menu.Button>
                         </div>
                         <Transition
@@ -119,7 +117,7 @@ function NavBar({ children }) {
                                   <Link
                                     to={item.link}
                                     className={classNames(
-                                      active ? 'bg-gray-100' : '',
+                                      active ? 'bg-gradient-to-tr from-violet-500 to-pink-500 text-white' : '',
                                       'block px-4 py-2 text-sm text-gray-700'
                                     )}
                                   >
@@ -153,6 +151,8 @@ function NavBar({ children }) {
                 </div>
               </div>
 
+              {/* ////////////////////////////////////////////////////////////////////////////////////////////////// */}
+
               <Disclosure.Panel className="md:hidden">
                 <div className="space-y-1 px-2 pb-3 pt-2 sm:px-3">
                   {navigation.map((item) => (
@@ -163,7 +163,7 @@ function NavBar({ children }) {
                       className={classNames(
                         item.current
                           ? 'bg-gray-900 text-white'
-                          : 'text-gray-300 hover:bg-gray-700 hover:text-white',
+                          : 'text-gray-900  hover:text-white',
                         'block rounded-md px-3 py-2 text-base font-medium'
                       )}
                       aria-current={item.current ? 'page' : undefined}
@@ -224,14 +224,6 @@ function NavBar({ children }) {
             </>
           )}
         </Disclosure>
-
-        <header className="bg-white shadow">
-          <div className="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
-            <h1 className="text-3xl font-bold tracking-tight text-gray-900">
-              E-Commerce
-            </h1>
-          </div>
-        </header>
         <main>
           <div className="mx-auto max-w-7xl py-6 sm:px-6 lg:px-8">
             {children}
